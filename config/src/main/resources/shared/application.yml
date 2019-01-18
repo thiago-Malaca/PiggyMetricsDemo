@@ -1,0 +1,62 @@
+logging:
+  level:
+    org.springframework.security: info
+feign:
+  hystrix:
+    enable: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://auth-service:5000/uaa/users/current
+
+spring:
+  data:
+    mongodb:
+      host: mongodb
+      username: user
+      password: '123456'
+      database: piggymetrics
+      port: 27017
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  # add 链路监控
+  sleuth:
+    web:
+      client:
+        enbabled: true
+    sampler:
+      probability: 1
+#  zipkin:
+#    base-url: http://zipkin:9411
+#    enabled: true
+#    self-tracing:
+#      enabled: true
+#    sender:
+#      type: web
+#    locator:
+#      discovery:
+#        enabled: true
+#percentage
+#management.endpoints.web.exposure.include: "*"
+#spring.cloud.bus.enabled=true
+#spring.cloud.bus.trace.enabled=true
+#management.endpoints.web.exposure.include=bus-refresh
