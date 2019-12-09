@@ -1,11 +1,11 @@
-package com.piggymetrics.statistics.repository;
+package com.base.statistics.repository;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
-import com.piggymetrics.statistics.domain.timeseries.DataPoint;
-import com.piggymetrics.statistics.domain.timeseries.DataPointId;
-import com.piggymetrics.statistics.domain.timeseries.ItemMetric;
-import com.piggymetrics.statistics.domain.timeseries.StatisticMetric;
+import com.base.statistics.domain.timeseries.DataPoint;
+import com.base.statistics.domain.timeseries.DataPointId;
+import com.base.statistics.domain.timeseries.ItemMetric;
+import com.base.statistics.domain.timeseries.StatisticMetric;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

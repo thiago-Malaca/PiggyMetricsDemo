@@ -1,16 +1,16 @@
-package com.piggymetrics.statistics.service;
+package com.base.statistics.service;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.piggymetrics.statistics.domain.Account;
-import com.piggymetrics.statistics.domain.Currency;
-import com.piggymetrics.statistics.domain.Item;
-import com.piggymetrics.statistics.domain.Saving;
-import com.piggymetrics.statistics.domain.TimePeriod;
-import com.piggymetrics.statistics.domain.timeseries.DataPoint;
-import com.piggymetrics.statistics.domain.timeseries.ItemMetric;
-import com.piggymetrics.statistics.domain.timeseries.StatisticMetric;
-import com.piggymetrics.statistics.repository.DataPointRepository;
+import com.base.statistics.domain.Account;
+import com.base.statistics.domain.Currency;
+import com.base.statistics.domain.Item;
+import com.base.statistics.domain.Saving;
+import com.base.statistics.domain.TimePeriod;
+import com.base.statistics.domain.timeseries.DataPoint;
+import com.base.statistics.domain.timeseries.ItemMetric;
+import com.base.statistics.domain.timeseries.StatisticMetric;
+import com.base.statistics.repository.DataPointRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

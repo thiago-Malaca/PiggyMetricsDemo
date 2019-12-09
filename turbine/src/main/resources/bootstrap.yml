@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: turbine
+  cloud:
+    config:
+      uri: http://config:8888
+      fail-fast: true
+      password: 123456
+      username: user
+    bootstrap:
+      enabled: false
+server:
+  port: 8989

@@ -1,9 +1,9 @@
-package com.piggymetrics.statistics.service;
+package com.base.statistics.service;
 
 import com.google.common.collect.ImmutableMap;
-import com.piggymetrics.statistics.client.ExchangeRatesClient;
-import com.piggymetrics.statistics.domain.Currency;
-import com.piggymetrics.statistics.domain.ExchangeRatesContainer;
+import com.base.statistics.client.ExchangeRatesClient;
+import com.base.statistics.domain.Currency;
+import com.base.statistics.domain.ExchangeRatesContainer;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

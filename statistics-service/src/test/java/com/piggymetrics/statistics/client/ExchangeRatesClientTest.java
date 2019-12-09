@@ -1,7 +1,7 @@
-package com.piggymetrics.statistics.client;
+package com.base.statistics.client;
 
-import com.piggymetrics.statistics.domain.Currency;
-import com.piggymetrics.statistics.domain.ExchangeRatesContainer;
+import com.base.statistics.domain.Currency;
+import com.base.statistics.domain.ExchangeRatesContainer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

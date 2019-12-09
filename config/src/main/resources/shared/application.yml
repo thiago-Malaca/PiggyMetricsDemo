@@ -31,32 +31,16 @@ spring:
       host: mongodb
       username: user
       password: '123456'
-      database: piggymetrics
+      database: base
       port: 27017
   rabbitmq:
     host: rabbitmq
     port: 5672
     username: guest
     password: guest
-  # add 链路监控
   sleuth:
     web:
       client:
         enbabled: true
     sampler:
       probability: 1
-#  zipkin:
-#    base-url: http://zipkin:9411
-#    enabled: true
-#    self-tracing:
-#      enabled: true
-#    sender:
-#      type: web
-#    locator:
-#      discovery:
-#        enabled: true
-#percentage
-#management.endpoints.web.exposure.include: "*"
-#spring.cloud.bus.enabled=true
-#spring.cloud.bus.trace.enabled=true
-#management.endpoints.web.exposure.include=bus-refresh

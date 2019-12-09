@@ -1,4 +1,4 @@
-BASE_IMAGE=cargo.caicloudprivatetest.com/qatest/pig-
+BASE_IMAGE=malaca.com/base-
 BASE_VERSION=v2.0
 
 
