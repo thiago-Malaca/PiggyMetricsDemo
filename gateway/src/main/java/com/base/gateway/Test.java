@@ -1,9 +1,9 @@
-package com.piggymetrics.gateway;
+package com.base.gateway;
 
 import java.io.*;
 
 /**
- * @PACKAGE_NAME：com.piggymetrics.gateway
+ * @PACKAGE_NAME：com.base.gateway
  * @DATE: 2018/11/23
  * @AURH: shilei
  * @DESC:
@@ -25,9 +25,9 @@ public class Test {
         try {
             // 以下读取和写入都转成UTF-8 防止乱码
             br = new BufferedReader(new InputStreamReader(new FileInputStream(
-                    "/Users/shilei/Downloads/eclipse-space/PiggyMetrics/gateway/src/main/java/com/piggymetrics/gateway/1.txt"), "UTF-8"));
+                    "/Users/shilei/Downloads/eclipse-space/base/gateway/src/main/java/com/base/gateway/1.txt"), "UTF-8"));
             bw = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("/Users/shilei/Downloads/eclipse-space/PiggyMetrics/gateway/src/main/java/com/piggymetrics/gateway/2.txt"), "UTF-8"));
+                    new FileOutputStream("/Users/shilei/Downloads/eclipse-space/base/gateway/src/main/java/com/base/gateway/2.txt"), "UTF-8"));
             StringBuffer str = new StringBuffer(" ");
             String line;
             while ((line = br.readLine()) != null && (line != "")) {
