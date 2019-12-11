@@ -11,3 +11,7 @@ spring:
       enabled: false
 server:
   port: 8989
+
+turbine:
+  stream:
+    destination: spring.cloud.hystrix.stream

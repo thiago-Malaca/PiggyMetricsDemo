@@ -22,6 +22,7 @@ import java.util.Arrays;
 @EnableFeignClients
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableScheduling
+@EnableHystrix
 public class NotificationServiceApplication {
 
 	public static void main(String[] args) {

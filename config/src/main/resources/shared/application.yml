@@ -44,3 +44,13 @@ spring:
         enbabled: true
     sampler:
       probability: 1
+
+  cloud:
+    stream:
+      bindings:
+        hystrixStreamOutput:
+          destination: spring.cloud.hystrix.stream
+
+management:
+  endpoints:
+    web.exposure.include: '*'

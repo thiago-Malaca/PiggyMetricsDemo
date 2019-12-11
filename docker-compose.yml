@@ -188,3 +188,28 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  hystrix:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    build: monitoring-dash
+    restart: always
+    depends_on:
+      - config
+      - eureka
+      - turbine
+    ports:
+      - 9999:9999
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+# ###################################################################################
+  resiliente_servico_a:
+    build: ./Resiliente.ServicoA
+    ports:
+      - 2501:80
+    depends_on:
+      - config
+      - eureka
+      - rabbitmq

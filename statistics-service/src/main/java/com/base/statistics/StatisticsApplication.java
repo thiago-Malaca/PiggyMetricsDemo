@@ -23,6 +23,7 @@ import java.util.Arrays;
 @EnableDiscoveryClient
 @EnableOAuth2Client
 @EnableFeignClients
+@EnableHystrix
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class StatisticsApplication {
 
