@@ -1,5 +1,6 @@
 version: '3'
 services:
+# ###################################################################################
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
@@ -10,7 +11,7 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
-
+# ###################################################################################
   config:
     environment:
       CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
@@ -22,7 +23,7 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
-
+# ###################################################################################
   eureka:
     environment:
       CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
@@ -36,41 +37,73 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
-
-  gateway:
+# ###################################################################################
+  turbine:
     environment:
       CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-    build: gateway
-    restart: always
-    depends_on:
-      - config
-      - eureka
-    ports:
-      - 80:4000
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  auth-service:
-    environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-      NOTIFICATION_SERVICE_PASSWORD: $NOTIFICATION_SERVICE_PASSWORD
-      STATISTICS_SERVICE_PASSWORD: $STATISTICS_SERVICE_PASSWORD
-      ACCOUNT_SERVICE_PASSWORD: $ACCOUNT_SERVICE_PASSWORD
-      MONGODB_PASSWORD: $MONGODB_PASSWORD
-    build: auth-service
+    build: turbine
     restart: always
     depends_on:
       - config
       - eureka
       - rabbitmq
-      - mongodb
+    ports:
+      - 8989:8989
     logging:
       options:
         max-size: "10m"
         max-file: "10"
-
+# ###################################################################################
+  hystrix-dash:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    build: hystrix-dash
+    restart: always
+    depends_on:
+      - config
+      - eureka
+      - turbine
+    ports:
+      - 9999:9999
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+# ###################################################################################
+  # gateway:
+  #   environment:
+  #     CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+  #   build: gateway
+  #   restart: always
+  #   depends_on:
+  #     - config
+  #     - eureka
+  #   ports:
+  #     - 80:4000
+  #   logging:
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "10"
+# ###################################################################################
+  # auth-service:
+  #   environment:
+  #     CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+  #     NOTIFICATION_SERVICE_PASSWORD: $NOTIFICATION_SERVICE_PASSWORD
+  #     STATISTICS_SERVICE_PASSWORD: $STATISTICS_SERVICE_PASSWORD
+  #     ACCOUNT_SERVICE_PASSWORD: $ACCOUNT_SERVICE_PASSWORD
+  #     MONGODB_PASSWORD: $MONGODB_PASSWORD
+  #   build: auth-service
+  #   restart: always
+  #   depends_on:
+  #     - config
+  #     - eureka
+  #     - rabbitmq
+  #     - mongodb
+  #   logging:
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "10"
+# ###################################################################################
   # auth-mongodb:
   #   environment:
   #     MONGODB_PASSWORD: $MONGODB_PASSWORD
@@ -82,60 +115,60 @@ services:
   #     options:
   #       max-size: "10m"
   #       max-file: "10"
-
-  account-service:
-    environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-      ACCOUNT_SERVICE_PASSWORD: $ACCOUNT_SERVICE_PASSWORD
-      MONGODB_PASSWORD: $MONGODB_PASSWORD
-    build: account-service
-    ports:
-      - 6000:6000
-    restart: always
-    depends_on:
-      - config
-      - eureka
-      - rabbitmq
-      - mongodb
-      - auth-service
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  mongodb:
-    environment:
-      INIT_DUMP: account-service-dump.js
-      MONGODB_PASSWORD: $MONGODB_PASSWORD
-    build: mongodb
-    ports:
-      - 27017:27017
-    restart: always
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  statistics-service:
-    environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-      MONGODB_PASSWORD: $MONGODB_PASSWORD
-      STATISTICS_SERVICE_PASSWORD: $STATISTICS_SERVICE_PASSWORD
-    build: statistics-service
-    ports:
-      - 7000:7000
-    restart: always
-    depends_on:
-      - config
-      - eureka
-      - rabbitmq
-      - mongodb
-      - auth-service
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
+# ###################################################################################
+  # account-service:
+  #   environment:
+  #     CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+  #     ACCOUNT_SERVICE_PASSWORD: $ACCOUNT_SERVICE_PASSWORD
+  #     MONGODB_PASSWORD: $MONGODB_PASSWORD
+  #   build: account-service
+  #   ports:
+  #     - 6000:6000
+  #   restart: always
+  #   depends_on:
+  #     - config
+  #     - eureka
+  #     - rabbitmq
+  #     - mongodb
+  #     - auth-service
+  #   logging:
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "10"
+# ###################################################################################
+  # mongodb:
+  #   environment:
+  #     INIT_DUMP: account-service-dump.js
+  #     MONGODB_PASSWORD: $MONGODB_PASSWORD
+  #   build: mongodb
+  #   ports:
+  #     - 27017:27017
+  #   restart: always
+  #   logging:
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "10"
+# ###################################################################################
+  # statistics-service:
+  #   environment:
+  #     CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+  #     MONGODB_PASSWORD: $MONGODB_PASSWORD
+  #     STATISTICS_SERVICE_PASSWORD: $STATISTICS_SERVICE_PASSWORD
+  #   build: statistics-service
+  #   ports:
+  #     - 7000:7000
+  #   restart: always
+  #   depends_on:
+  #     - config
+  #     - eureka
+  #     - rabbitmq
+  #     - mongodb
+  #     - auth-service
+  #   logging:
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "10"
+# ###################################################################################
   # statistics-mongodb:
   #   environment:
   #     MONGODB_PASSWORD: $MONGODB_PASSWORD
@@ -145,7 +178,7 @@ services:
   #     options:
   #       max-size: "10m"
   #       max-file: "10"
-
+# ###################################################################################
   # notification-service:
   #   environment:
   #     CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
@@ -162,7 +195,7 @@ services:
   #     options:
   #       max-size: "10m"
   #       max-file: "10"
-
+# ###################################################################################
   # notification-mongodb:
   #   image: sqshq/base-mongodb
   #   restart: always
@@ -172,38 +205,6 @@ services:
   #     options:
   #       max-size: "10m"
   #       max-file: "10"
-
-  turbine:
-    environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-    build: turbine
-    restart: always
-    depends_on:
-      - config
-      - eureka
-      - rabbitmq
-    ports:
-      - 8989:8989
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  hystrix:
-    environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-    build: monitoring-dash
-    restart: always
-    depends_on:
-      - config
-      - eureka
-      - turbine
-    ports:
-      - 9999:9999
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
 # ###################################################################################
   resiliente_servico_a:
     build: ./Resiliente.ServicoA
@@ -213,3 +214,7 @@ services:
       - config
       - eureka
       - rabbitmq
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"

@@ -1,6 +1,5 @@
-BASE_IMAGE=malaca.com/base-
-BASE_VERSION=v2.0
-
+BASE_IMAGE=malaca/spring-cloud-
+BASE_VERSION=Hoxton.RELEASE
 
 all: build-containers
 
@@ -20,7 +19,7 @@ build-containers: build
 
 push:
 	@for target in $(shell ls -lh|grep ^d|awk '{print $$NF}'); do   \
-	  docker push  $(BASE_IMAGE)$${target}:$(BASE_VERSION) ;        \
+	  docker push $(BASE_IMAGE)$${target}:$(BASE_VERSION) ;        \
 	done
 
 

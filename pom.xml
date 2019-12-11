@@ -40,7 +40,7 @@
 
 		<module>gateway</module>
 
-		<module>monitoring-dash</module>
+		<module>hystrix-dash</module>
 
 		<module>auth-service</module>
 		<module>account-service</module>

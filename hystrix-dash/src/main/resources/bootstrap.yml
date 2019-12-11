@@ -1,5 +1,5 @@
 spring:
   application:
-    name: monitoring-dash
+    name: hystrix-dash
 server:
   port: 9999
